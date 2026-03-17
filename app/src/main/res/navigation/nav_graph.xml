@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_explore">
+
+    <fragment
+        android:id="@+id/navigation_explore"
+        android:name="com.example.travelmapindia.ExploreFragment"
+        android:label="Explore"
+        tools:layout="@layout/fragment_explore" />
+
+    <fragment
+        android:id="@+id/navigation_states"
+        android:name="com.example.travelmapindia.StatesFragment"
+        android:label="States"
+        tools:layout="@layout/fragment_states" />
+
+    <fragment
+        android:id="@+id/navigation_near_me"
+        android:name="com.example.travelmapindia.NearMeFragment"
+        android:label="Near Me"
+        tools:layout="@layout/fragment_near_me" />
+
+    <fragment
+        android:id="@+id/navigation_menu"
+        android:name="com.example.travelmapindia.MenuFragment"
+        android:label="Menu"
+        tools:layout="@layout/fragment_menu" />
+</navigation>
