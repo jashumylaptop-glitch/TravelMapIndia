@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Taj Mahal",
+    "city": "Agra",
+    "imageUrl": "tajmahal",
+    "rating": 4.9,
+    "category": "Heritage"
+  },
+  {
+    "name": "Hawa Mahal",
+    "city": "Jaipur",
+    "imageUrl": "hawamahal",
+    "rating": 4.7,
+    "category": "Architecture"
+  },
+  {
+    "name": "Golden Temple",
+    "city": "Amritsar",
+    "imageUrl": "goldentemple",
+    "rating": 4.8,
+    "category": "Spiritual"
+  },
+  {
+    "name": "Munnar Tea Gardens",
+    "city": "Kerala",
+    "imageUrl": "munnartea",
+    "rating": 4.6,
+    "category": "Nature"
+  }
+]
