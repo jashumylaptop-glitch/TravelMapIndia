@@ -4,27 +4,39 @@
     "city": "Agra",
     "imageUrl": "tajmahal",
     "rating": 4.9,
-    "category": "Heritage"
+    "category": "Heritage",
+    "latitude": 27.1751,
+    "longitude": 78.0421,
+    "description": "The Taj Mahal is an ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra. It was commissioned in 1632 by the Mughal emperor Shah Jahan."
   },
   {
     "name": "Hawa Mahal",
     "city": "Jaipur",
     "imageUrl": "hawamahal",
     "rating": 4.7,
-    "category": "Architecture"
+    "category": "Architecture",
+    "latitude": 26.9239,
+    "longitude": 75.8267,
+    "description": "Hawa Mahal is a palace in Jaipur, India. Constructed of red and pink sandstone, the palace sits on the edge of the City Palace, Jaipur, and extends to the Zenana, or women's chambers."
   },
   {
     "name": "Golden Temple",
     "city": "Amritsar",
     "imageUrl": "goldentemple",
     "rating": 4.8,
-    "category": "Spiritual"
+    "category": "Spiritual",
+    "latitude": 31.6200,
+    "longitude": 74.8765,
+    "description": "The Golden Temple, also known as Harmandir Sahib, is a Gurdwara located in the city of Amritsar, Punjab, India. It is the preeminent spiritual site of Sikhism."
   },
   {
     "name": "Munnar Tea Gardens",
     "city": "Kerala",
     "imageUrl": "munnartea",
     "rating": 4.6,
-    "category": "Nature"
+    "category": "Nature",
+    "latitude": 10.0889,
+    "longitude": 77.0595,
+    "description": "Munnar is a town in the Western Ghats mountain range in India’s Kerala state. A hill station and former resort for the British Raj elite, it's surrounded by rolling hills dotted with tea plantations."
   }
 ]

@@ -12,6 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!-- Image Loading Spinner -->
+        <ProgressBar
+            android:id="@+id/imageProgressBar"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="@id/placeImage"
+            app:layout_constraintEnd_toEndOf="@id/placeImage"
+            app:layout_constraintStart_toStartOf="@id/placeImage"
+            app:layout_constraintTop_toTopOf="@id/placeImage" />
+
         <ImageView
             android:id="@+id/placeImage"
             android:layout_width="match_parent"
@@ -19,23 +31,47 @@
             android:scaleType="centerCrop"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/placeRating"
+        <LinearLayout
+            android:id="@+id/ratingBadge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="12dp"
             android:background="@drawable/bg_badge"
-            android:drawableStart="@android:drawable/btn_star_big_on"
-            android:drawablePadding="4dp"
             android:gravity="center"
+            android:orientation="horizontal"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
-            android:text="4.9"
-            android:textColor="@color/badge_text"
-            android:textSize="12sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_star" />
+
+            <TextView
+                android:id="@+id/placeRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="4.9"
+                android:textColor="@color/badge_text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnFavorite"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="12dp"
+            android:background="@drawable/bg_badge"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_heart"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/badge_text" />
 
         <LinearLayout
             android:layout_width="match_parent"

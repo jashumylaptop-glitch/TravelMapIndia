@@ -1,6 +1,8 @@
 package com.example.travelmapindia;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +33,39 @@ public class ExploreFragment extends Fragment {
         recyclerView = view.findViewById(R.id.exploreRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        List<Place> places = loadPlacesFromAsset();
-        adapter = new PlaceAdapter(places);
-        recyclerView.setAdapter(adapter);
+        syncPlacesWithDatabase();
 
         return view;
+    }
+
+    private void syncPlacesWithDatabase() {
+        new Thread(() -> {
+            List<Place> jsonPlaces = loadPlacesFromAsset();
+            AppDatabase db = AppDatabase.getInstance(requireContext());
+            PlaceDao dao = db.placeDao();
+
+            for (Place jsonPlace : jsonPlaces) {
+                Place dbPlace = dao.getPlaceByName(jsonPlace.getName());
+                if (dbPlace != null) {
+                    // Update the JSON object with the saved favorite status
+                    jsonPlace.setFavorite(dbPlace.isFavorite());
+                    jsonPlace.setId(dbPlace.getId());
+                    
+                    // Sync: Update the database with the latest image path from JSON
+                    dbPlace.setImageUrl(jsonPlace.getImageUrl());
+                    dbPlace.setLatitude(jsonPlace.getLatitude());
+                    dbPlace.setLongitude(jsonPlace.getLongitude());
+                    dao.update(dbPlace);
+                } else {
+                    dao.insert(jsonPlace);
+                }
+            }
+
+            new Handler(Looper.getMainLooper()).post(() -> {
+                adapter = new PlaceAdapter(jsonPlaces);
+                recyclerView.setAdapter(adapter);
+            });
+        }).start();
     }
 
     private List<Place> loadPlacesFromAsset() {

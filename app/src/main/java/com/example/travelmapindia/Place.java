@@ -1,58 +1,67 @@
 package com.example.travelmapindia;
 
-public class Place {
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import java.io.Serializable;
+
+@Entity(tableName = "places")
+public class Place implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
     private String name;
     private String city;
     private String imageUrl;
     private float rating;
     private String category;
+    private boolean isFavorite;
+    private double latitude;
+    private double longitude;
+    private String description;
 
-    public Place(String name, String city, String imageUrl, float rating, String category) {
+    // Default constructor for Room and Gson
+    public Place() {
+    }
+
+    public Place(String name, String city, String imageUrl, float rating, String category, double latitude, double longitude, String description) {
         this.name = name;
         this.city = city;
         this.imageUrl = imageUrl;
         this.rating = rating;
         this.category = category;
+        this.isFavorite = false;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.description = description;
     }
 
     // Getters and Setters
-    public String getName() {
-        return name;
-    }
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public String getCity() {
-        return city;
-    }
+    public String getCity() { return city; }
+    public void setCity(String city) { this.city = city; }
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+    public String getImageUrl() { return imageUrl; }
+    public void setImageUrl(String imageUrl) { this.imageUrl = imageUrl; }
 
-    public String getImageUrl() {
-        return imageUrl;
-    }
+    public float getRating() { return rating; }
+    public void setRating(float rating) { this.rating = rating; }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+    public String getCategory() { return category; }
+    public void setCategory(String category) { this.category = category; }
 
-    public float getRating() {
-        return rating;
-    }
+    public boolean isFavorite() { return isFavorite; }
+    public void setFavorite(boolean favorite) { isFavorite = favorite; }
 
-    public void setRating(float rating) {
-        this.rating = rating;
-    }
+    public double getLatitude() { return latitude; }
+    public void setLatitude(double latitude) { this.latitude = latitude; }
 
-    public String getCategory() {
-        return category;
-    }
+    public double getLongitude() { return longitude; }
+    public void setLongitude(double longitude) { this.longitude = longitude; }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    public String getDescription() { return description; }
+    public void setDescription(String description) { this.description = description; }
 }

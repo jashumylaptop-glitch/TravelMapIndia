@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Rajasthan",
+    "imageUrl": "rajasthan",
+    "placeCount": 15
+  },
+  {
+    "name": "Kerala",
+    "imageUrl": "kerala",
+    "placeCount": 12
+  },
+  {
+    "name": "Punjab",
+    "imageUrl": "punjab",
+    "placeCount": 8
+  },
+  {
+    "name": "Uttar Pradesh",
+    "imageUrl": "up",
+    "placeCount": 20
+  },
+  {
+    "name": "Goa",
+    "imageUrl": "goa",
+    "placeCount": 10
+  }
+]
