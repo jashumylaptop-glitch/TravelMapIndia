@@ -11,7 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Explore States"
-        android:textAppearance="?attr/textAppearanceHeadlineMedium"
+        android:textSize="28sp"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

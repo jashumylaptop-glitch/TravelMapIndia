@@ -1,27 +1,17 @@
 [
-  {
-    "name": "Rajasthan",
-    "imageUrl": "rajasthan",
-    "placeCount": 15
-  },
-  {
-    "name": "Kerala",
-    "imageUrl": "kerala",
-    "placeCount": 12
-  },
-  {
-    "name": "Punjab",
-    "imageUrl": "punjab",
-    "placeCount": 8
-  },
-  {
-    "name": "Uttar Pradesh",
-    "imageUrl": "up",
-    "placeCount": 20
-  },
-  {
-    "name": "Goa",
-    "imageUrl": "goa",
-    "placeCount": 10
-  }
+  { "name": "Uttar Pradesh", "imageUrl": "upq", "placeCount": 20 },
+  { "name": "Rajasthan", "imageUrl": "hawamahal", "placeCount": 15 },
+  { "name": "Kerala", "imageUrl": "kerala", "placeCount": 12 },
+  { "name": "Goa", "imageUrl": "goa", "placeCount": 10 },
+  { "name": "Punjab", "imageUrl": "goldentemple", "placeCount": 8 },
+  { "name": "Maharashtra", "imageUrl": "maharashtra", "placeCount": 6 },
+  { "name": "Tamil Nadu", "imageUrl": "tamilnadu", "placeCount": 6 },
+  { "name": "Karnataka", "imageUrl": "karnataka", "placeCount": 6 },
+  { "name": "Himachal Pradesh", "imageUrl": "himachal", "placeCount": 6 },
+  { "name": "Uttarakhand", "imageUrl": "uttarakhand", "placeCount": 6 },
+  { "name": "Madhya Pradesh", "imageUrl": "mp", "placeCount": 6 },
+  { "name": "Gujarat", "imageUrl": "gujarat", "placeCount": 6 },
+  { "name": "Delhi", "imageUrl": "delhi", "placeCount": 6 },
+  { "name": "Jammu & Kashmir", "imageUrl": "jk", "placeCount": 6 },
+  { "name": "West Bengal", "imageUrl": "wb", "placeCount": 6 }
 ]

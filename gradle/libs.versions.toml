@@ -11,6 +11,7 @@ navigation = "2.8.5"
 glide = "4.16.0"
 gson = "2.10.1"
 room = "2.6.1"
+playServicesLocation = "21.1.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -26,6 +27,7 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -1,6 +1,7 @@
 package com.example.travelmapindia;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,13 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHol
                 .load(resourceId != 0 ? resourceId : R.drawable.ic_launcher_background)
                 .centerCrop()
                 .into(holder.image);
+
+        // Click to open places for this state
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, StatePlacesActivity.class);
+            intent.putExtra("stateName", state.getName());
+            context.startActivity(intent);
+        });
     }
 
     @Override

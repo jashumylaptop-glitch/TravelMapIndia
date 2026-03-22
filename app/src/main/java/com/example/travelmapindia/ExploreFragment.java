@@ -3,6 +3,8 @@ package com.example.travelmapindia;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
@@ -24,6 +28,10 @@ public class ExploreFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private PlaceAdapter adapter;
+    private List<Place> allPlacesList = new ArrayList<>();
+    private List<Place> displayList = new ArrayList<>();
+    private ChipGroup categoryChipGroup;
+    private TextInputEditText editSearch;
 
     @Nullable
     @Override
@@ -32,37 +40,91 @@ public class ExploreFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.exploreRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        
+        categoryChipGroup = view.findViewById(R.id.categoryChipGroup);
+        editSearch = view.findViewById(R.id.editSearch);
 
+        setupSearch();
+        setupFilters();
         syncPlacesWithDatabase();
 
         return view;
     }
 
+    private void setupSearch() {
+        editSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterList(s.toString(), getSelectedCategory());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+
+    private void setupFilters() {
+        categoryChipGroup.setOnCheckedStateChangeListener((group, checkedIds) -> {
+            filterList(editSearch.getText().toString(), getSelectedCategory());
+        });
+    }
+
+    private String getSelectedCategory() {
+        int checkedId = categoryChipGroup.getCheckedChipId();
+        if (checkedId == R.id.chipHeritage) return "Heritage";
+        if (checkedId == R.id.chipNature) return "Nature";
+        if (checkedId == R.id.chipSpiritual) return "Spiritual";
+        if (checkedId == R.id.chipBeach) return "Beach";
+        if (checkedId == R.id.chipAdventure) return "Adventure";
+        return "All";
+    }
+
+    private void filterList(String query, String category) {
+        displayList.clear();
+        for (Place place : allPlacesList) {
+            boolean matchesQuery = place.getName().toLowerCase().contains(query.toLowerCase()) ||
+                    place.getCity().toLowerCase().contains(query.toLowerCase());
+            boolean matchesCategory = category.equals("All") || place.getCategory().equalsIgnoreCase(category);
+
+            if (matchesQuery && matchesCategory) {
+                displayList.add(place);
+            }
+        }
+        if (adapter != null) {
+            adapter.notifyDataSetChanged();
+        }
+    }
+
     private void syncPlacesWithDatabase() {
         new Thread(() -> {
-            List<Place> jsonPlaces = loadPlacesFromAsset();
+            allPlacesList = loadPlacesFromAsset();
             AppDatabase db = AppDatabase.getInstance(requireContext());
             PlaceDao dao = db.placeDao();
 
-            for (Place jsonPlace : jsonPlaces) {
+            for (Place jsonPlace : allPlacesList) {
                 Place dbPlace = dao.getPlaceByName(jsonPlace.getName());
                 if (dbPlace != null) {
-                    // Update the JSON object with the saved favorite status
                     jsonPlace.setFavorite(dbPlace.isFavorite());
                     jsonPlace.setId(dbPlace.getId());
                     
-                    // Sync: Update the database with the latest image path from JSON
                     dbPlace.setImageUrl(jsonPlace.getImageUrl());
                     dbPlace.setLatitude(jsonPlace.getLatitude());
                     dbPlace.setLongitude(jsonPlace.getLongitude());
+                    dbPlace.setCategory(jsonPlace.getCategory());
                     dao.update(dbPlace);
                 } else {
                     dao.insert(jsonPlace);
                 }
             }
 
+            displayList.clear();
+            displayList.addAll(allPlacesList);
+
             new Handler(Looper.getMainLooper()).post(() -> {
-                adapter = new PlaceAdapter(jsonPlaces);
+                adapter = new PlaceAdapter(displayList);
                 recyclerView.setAdapter(adapter);
             });
         }).start();

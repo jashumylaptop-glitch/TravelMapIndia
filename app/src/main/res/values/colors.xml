@@ -2,6 +2,23 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="badge_background">#E3F2FD</color>
-    <color name="badge_text">#1976D2</color>
+
+    <!-- Professional "Indian Elegance" Palette -->
+    <color name="primary">#E65100</color>
+    <color name="primary_container">#FFCCBC</color>
+
+    <color name="secondary">#006064</color>
+    <color name="secondary_container">#B2EBF2</color>
+
+    <color name="surface">#FEF7FF</color>
+    <color name="surface_variant">#F5EEEF</color>
+
+    <!-- Light Card Background (Subtle Saffron Tint) -->
+    <color name="light_card_bg">#FFF8F1</color>
+
+    <color name="text_primary">#1D1B20</color>
+    <color name="text_secondary">#49454F</color>
+
+    <color name="badge_background">#FBE9E7</color>
+    <color name="badge_text">#D84315</color>
 </resources>

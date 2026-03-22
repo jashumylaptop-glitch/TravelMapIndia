@@ -52,7 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Taj Mahal"
-                android:textAppearance="?attr/textAppearanceHeadlineLarge"
+                android:textSize="28sp"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold" />
 
             <TextView
@@ -96,7 +97,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="About this place"
-                android:textAppearance="?attr/textAppearanceTitleLarge"
+                android:textSize="20sp"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold" />
 
             <TextView
@@ -127,7 +129,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Rate your visit"
-                android:textAppearance="?attr/textAppearanceTitleLarge"
+                android:textSize="20sp"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textStyle="bold" />
 
             <RatingBar

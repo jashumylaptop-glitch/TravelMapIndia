@@ -40,11 +40,9 @@ dependencies {
     implementation(libs.navigation.ui)
     implementation(libs.glide)
     implementation(libs.gson)
-    
-    // Room Database
     implementation(libs.room.runtime)
+    implementation(libs.play.services.location)
     annotationProcessor(libs.room.compiler)
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
