@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_card_bg"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingHorizontal="20dp"
+    android:paddingTop="48dp"
+    android:paddingBottom="20dp">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/header_profile_image"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:contentDescription="User profile"
+        android:src="@mipmap/ic_launcher_round"
+        android:scaleType="centerCrop"
+        android:background="@drawable/bg_badge"
+        android:padding="2dp"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+        xmlns:app="http://schemas.android.com/apk/res-auto" />
+
+    <TextView
+        android:id="@+id/header_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:text="Travel India Explorer"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/header_user_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="explore@india.com"
+        android:textSize="14sp"
+        android:alpha="0.7"
+        android:textColor="?android:attr/textColorPrimary" />
+
+</LinearLayout>

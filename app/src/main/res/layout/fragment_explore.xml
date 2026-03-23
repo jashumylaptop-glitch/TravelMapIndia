@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurface">
+    android:background="?attr/colorSurface"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -16,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:paddingHorizontal="16dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="16dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
@@ -26,26 +29,81 @@
                 app:strokeWidth="0dp"
                 app:cardBackgroundColor="@color/light_card_bg">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:padding="20dp">
 
-                    <TextView
-                        android:id="@+id/exploreTitle"
+                    <LinearLayout
+                        android:id="@+id/titleContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toStartOf="@id/actionButtons"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/exploreTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Explore India"
+                            android:textSize="28sp"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/actionButtons"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Explore India"
-                        android:textSize="28sp"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textStyle="bold" />
+                        android:layout_alignParentEnd="true"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <ImageButton
+                                android:id="@+id/btn_plan_trip"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="?attr/selectableItemBackgroundBorderless"
+                                android:contentDescription="Plan Trip"
+                                android:src="@android:drawable/ic_menu_today"
+                                app:tint="?android:attr/textColorPrimary" />
+
+                            <TextView
+                                android:id="@+id/badge_trip_count"
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="top|end"
+                                android:layout_marginTop="4dp"
+                                android:layout_marginEnd="4dp"
+                                android:background="@drawable/bg_badge"
+                                android:gravity="center"
+                                android:text="1"
+                                android:textColor="@color/badge_text"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:visibility="gone" />
+                        </FrameLayout>
+
+                        <ImageButton
+                            android:id="@+id/btn_menu"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="Menu"
+                            android:src="@drawable/ic_menu"
+                            app:tint="?android:attr/textColorPrimary" />
+                    </LinearLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/search_layout"
                         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/titleContainer"
                         android:layout_marginTop="24dp"
                         app:startIconDrawable="@android:drawable/ic_menu_search"
                         app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
@@ -59,8 +117,10 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
+                        android:id="@+id/quoteContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/search_layout"
                         android:layout_marginTop="24dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical">
@@ -85,6 +145,7 @@
                     <HorizontalScrollView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_below="@id/quoteContainer"
                         android:layout_marginTop="24dp"
                         android:scrollbars="none">
 
@@ -140,7 +201,7 @@
 
                         </com.google.android.material.chip.ChipGroup>
                     </HorizontalScrollView>
-                </LinearLayout>
+                </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>

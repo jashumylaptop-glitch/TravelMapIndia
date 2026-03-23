@@ -24,8 +24,8 @@
         tools:layout="@layout/fragment_near_me" />
 
     <fragment
-        android:id="@+id/navigation_menu"
+        android:id="@+id/navigation_trip_plan"
         android:name="com.example.travelmapindia.MenuFragment"
-        android:label="Menu"
+        android:label="Plan Trip"
         tools:layout="@layout/fragment_menu" />
 </navigation>

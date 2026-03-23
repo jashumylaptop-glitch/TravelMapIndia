@@ -13,7 +13,7 @@
         android:icon="@drawable/ic_near_me"
         android:title="Near Me" />
     <item
-        android:id="@+id/navigation_menu"
-        android:icon="@drawable/ic_menu"
-        android:title="Menu" />
+        android:id="@+id/navigation_trip_plan"
+        android:icon="@android:drawable/ic_menu_today"
+        android:title="Plan Trip" />
 </menu>

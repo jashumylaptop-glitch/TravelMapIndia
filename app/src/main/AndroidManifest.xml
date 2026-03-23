@@ -26,17 +26,21 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".PlaceDetailActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".StatePlacesActivity"
             android:exported="false"
-            android:theme="@style/Theme.TravelMapIndia" />
+            android:theme="@style/Theme.TravelMapIndia"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 
 </manifest>

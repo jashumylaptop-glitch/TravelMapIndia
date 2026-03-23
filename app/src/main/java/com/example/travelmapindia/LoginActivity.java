@@ -51,6 +51,10 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putInt("userId", user.getId());
                             editor.putString("userName", user.getUsername());
                             editor.putString("userEmail", user.getEmail());
+                            // Store the profile image URI if it exists in DB
+                            if (user.getProfileImageUri() != null) {
+                                editor.putString("profileImageUri", user.getProfileImageUri());
+                            }
                             editor.apply();
 
                             Toast.makeText(this, "Welcome " + user.getUsername(), Toast.LENGTH_SHORT).show();

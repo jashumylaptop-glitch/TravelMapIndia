@@ -19,11 +19,58 @@
         <item name="android:textColorPrimary">@color/text_primary</item>
         <item name="android:textColorSecondary">@color/text_secondary</item>
 
-        <!-- Status & Navigation Bar -->
-        <item name="android:statusBarColor">@color/surface</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
-        <item name="android:navigationBarColor">@color/surface</item>
+        <!-- Global Shape Appearances -->
+        <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.TravelMap.Medium</item>
+        <item name="shapeAppearanceLargeComponent">@style/ShapeAppearance.TravelMap.Large</item>
+
+        <!-- Material Components default styles -->
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.TravelMap.MaterialAlertDialog</item>
+        <item name="textInputStyle">@style/Widget.TravelMap.TextInputLayout</item>
+        <item name="materialButtonStyle">@style/Widget.TravelMap.Button</item>
     </style>
 
     <style name="Theme.TravelMapIndia" parent="Base.Theme.TravelMapIndia" />
+
+    <!-- 28dp for very smooth/rounded corners -->
+    <style name="ShapeAppearance.TravelMap.Medium" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">28dp</item>
+    </style>
+
+    <!-- 32dp for dialogs -->
+    <style name="ShapeAppearance.TravelMap.Large" parent="ShapeAppearance.Material3.LargeComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">32dp</item>
+    </style>
+
+    <style name="Widget.TravelMap.TextInputLayout" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.TravelMap.Medium</item>
+        <!-- Explicitly set radii for the outlined box -->
+        <item name="boxCornerRadiusTopStart">28dp</item>
+        <item name="boxCornerRadiusTopEnd">28dp</item>
+        <item name="boxCornerRadiusBottomStart">28dp</item>
+        <item name="boxCornerRadiusBottomEnd">28dp</item>
+    </style>
+
+    <style name="Widget.TravelMap.Button" parent="Widget.Material3.Button">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.TravelMap.Medium</item>
+    </style>
+
+    <style name="ThemeOverlay.TravelMap.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearance">@style/ShapeAppearance.TravelMap.Large</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.TravelMap.Large</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.TravelMap</item>
+    </style>
+
+    <style name="MaterialAlertDialog.TravelMap" parent="MaterialAlertDialog.Material3">
+        <item name="shapeAppearance">@style/ShapeAppearance.TravelMap.Large</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearance.TravelMap.Large</item>
+        <item name="backgroundTint">@android:color/white</item>
+    </style>
+
+    <!-- Unified style for all rounded dialogs -->
+    <style name="RoundedAlertDialog" parent="ThemeOverlay.TravelMap.MaterialAlertDialog">
+        <!-- Corrects the background and shape for the dialog window -->
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>

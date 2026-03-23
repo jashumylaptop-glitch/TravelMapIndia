@@ -1,6 +1,8 @@
 package com.example.travelmapindia;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
@@ -22,6 +25,7 @@ public class StatesFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private StateAdapter adapter;
+    private TextInputEditText searchEdit;
 
     @Nullable
     @Override
@@ -29,12 +33,27 @@ public class StatesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_states, container, false);
 
         recyclerView = view.findViewById(R.id.statesRecyclerView);
+        searchEdit = view.findViewById(R.id.editStateSearch);
+        
         // Using a GridLayout with 2 columns
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
         List<State> states = loadStatesFromAsset();
         adapter = new StateAdapter(states);
         recyclerView.setAdapter(adapter);
+
+        searchEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.filter(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
 
         return view;
     }

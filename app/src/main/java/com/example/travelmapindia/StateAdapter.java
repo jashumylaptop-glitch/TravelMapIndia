@@ -10,14 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHolder> {
 
     private List<State> stateList;
+    private List<State> stateListFull;
 
     public StateAdapter(List<State> stateList) {
         this.stateList = stateList;
+        this.stateListFull = new ArrayList<>(stateList);
     }
 
     @NonNull
@@ -54,6 +58,18 @@ public class StateAdapter extends RecyclerView.Adapter<StateAdapter.StateViewHol
     @Override
     public int getItemCount() {
         return stateList.size();
+    }
+
+    public void filter(String text) {
+        if (text.isEmpty()) {
+            stateList = new ArrayList<>(stateListFull);
+        } else {
+            String filterPattern = text.toLowerCase().trim();
+            stateList = stateListFull.stream()
+                    .filter(state -> state.getName().toLowerCase().contains(filterPattern))
+                    .collect(Collectors.toList());
+        }
+        notifyDataSetChanged();
     }
 
     static class StateViewHolder extends RecyclerView.ViewHolder {
